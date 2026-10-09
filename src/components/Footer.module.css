@@ -1,0 +1,233 @@
+.footer {
+  /* stage unit — the disco scene can scale independently of the page */
+  --su: var(--u);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 300);
+  overflow: hidden;
+  padding: 80px var(--gutter) 0;
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* Disco stage — absolute, laid out in Figma px (1440 × 752) */
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--su) * 1440);
+  height: calc(var(--su) * 752);
+  pointer-events: none;
+}
+
+.spot {
+  position: absolute;
+  will-change: transform;
+}
+
+.spotImg {
+  position: absolute;
+  /* SVG blur bleed: inset -46.67% -12.73% */
+  top: -46.67%;
+  bottom: -46.67%;
+  left: -12.73%;
+  right: -12.73%;
+  width: 125.46%;
+  height: 193.34%;
+}
+
+/* Every beam pivots on the disco ball centre (1151, 246) */
+.beam {
+  position: absolute;
+  left: calc(var(--su) * 631);
+  top: calc(var(--su) * -274);
+  width: calc(var(--su) * 1040);
+  height: calc(var(--su) * 1040);
+  transform-origin: 50% 50%;
+  /* no mix-blend-mode: blending five rotating 1040px layers stalls integrated GPUs */
+  will-change: transform, opacity;
+}
+
+.beamImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100.63%;
+}
+
+.string {
+  position: absolute;
+  left: calc(var(--su) * 1150);
+  top: 0;
+  width: max(1px, calc(var(--su) * 2));
+  height: calc(var(--su) * 200);
+  background: var(--muted);
+}
+
+.cap {
+  position: absolute;
+  left: calc(var(--su) * 1142);
+  top: calc(var(--su) * 190);
+  width: calc(var(--su) * 18);
+  height: calc(var(--su) * 10);
+  border-radius: 3px;
+  background: #b9b3af;
+}
+
+.ball {
+  position: absolute;
+  left: calc(var(--su) * 1101);
+  top: calc(var(--su) * 196);
+  width: calc(var(--su) * 100);
+  height: calc(var(--su) * 100);
+  border-radius: 50%;
+  overflow: hidden;
+  background: #c9ccd6;
+  pointer-events: auto;
+}
+
+.ballCanvas,
+.ballCanvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.highlight {
+  position: absolute;
+  left: 20%;
+  top: 16%;
+  width: 30%;
+  height: 22%;
+  pointer-events: none;
+}
+
+.highlight img {
+  position: absolute;
+  top: -36.36%;
+  left: -26.67%;
+  width: 153.34%;
+  height: 172.72%;
+}
+
+.sparkle {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+/* Content */
+.columns {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  white-space: nowrap;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.colLabel {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--muted-dark);
+}
+
+.toTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s;
+}
+
+.toTop:hover {
+  color: var(--yellow);
+}
+
+.colBody {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s, transform 0.4s var(--ease-out-expo);
+}
+
+.link:hover {
+  color: var(--yellow);
+  transform: translateX(4px);
+}
+
+.big {
+  position: relative;
+  z-index: 1;
+  font-size: calc(var(--u) * 330);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+}
+
+/* Figma: footer mascot at (1066, 352) */
+.mascotSpot {
+  --m: var(--su);
+  position: absolute;
+  left: calc(var(--su) * 1066);
+  top: calc(var(--su) * 352);
+}
+
+/* soft floor shadow under the dancing frog */
+.mascotShadow {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: calc(var(--su) * -2);
+  height: calc(var(--su) * 18);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.8), transparent);
+  opacity: 0.6;
+  filter: blur(2px);
+}
+
+@media (max-width: 900px) {
+  .footer {
+    --su: calc(100vw / 760);
+    gap: 160px;
+  }
+
+  .stage {
+    left: calc(var(--su) * -620);
+  }
+
+  .columns {
+    flex-wrap: wrap;
+    row-gap: 28px;
+    padding-top: 60px;
+  }
+
+  .col {
+    flex: 1 1 40%;
+  }
+}

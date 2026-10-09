@@ -1,0 +1,52 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="162" height="189" viewBox="0 0 162 189" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mascot">
+<ellipse id="Foot L" cx="49.5" cy="155.25" rx="22.5" ry="11.25" fill="#E5A92A"/>
+<ellipse id="Foot R" cx="112.5" cy="155.25" rx="22.5" ry="11.25" fill="#E5A92A"/>
+<g id="Body" filter="url(#filter0_dii_0_233)">
+<path d="M111 27C127.569 27 141 40.4315 141 57C141 65.6435 137.342 73.4309 131.493 78.9053C142.074 88.042 148.5 100.071 148.5 113.25C148.5 141.831 118.279 165 81 165C43.7208 165 13.5 141.831 13.5 113.25C13.5 100.071 19.9253 88.042 30.5059 78.9053C24.6569 73.4309 21 65.6432 21 57C21 40.4315 34.4315 27 51 27C67.5685 27 81 40.4315 81 57C81 58.5298 80.884 60.0327 80.6631 61.501C80.7753 61.5006 80.8876 61.5 81 61.5C81.112 61.5 81.224 61.5006 81.3359 61.501C81.115 60.0328 81 58.5298 81 57C81 40.4315 94.4315 27 111 27Z" fill="url(#paint0_linear_0_233)"/>
+</g>
+<ellipse id="Belly" cx="81" cy="131.25" rx="39" ry="23.25" fill="white" fill-opacity="0.28"/>
+<g id="Eyes">
+<circle id="White L" cx="49.5" cy="58.5" r="21" fill="white"/>
+<ellipse id="Pupil L" cx="51" cy="59.25" rx="10.5" ry="11.25" fill="#1A1A16"/>
+<circle id="Shine L" cx="48.375" cy="54.375" r="3.375" fill="white"/>
+<circle id="White R" cx="112.5" cy="58.5" r="21" fill="white"/>
+<ellipse id="Pupil R" cx="114" cy="59.25" rx="10.5" ry="11.25" fill="#1A1A16"/>
+<circle id="Shine R" cx="111.375" cy="54.375" r="3.375" fill="white"/>
+</g>
+<ellipse id="Cheek L" cx="40.5" cy="99.75" rx="10.5" ry="5.25" fill="#FF7A9A" fill-opacity="0.55"/>
+<ellipse id="Cheek R" cx="121.5" cy="99.75" rx="10.5" ry="5.25" fill="#FF7A9A" fill-opacity="0.55"/>
+<path id="Mouth" d="M104.954 95.1435C103.161 98.0329 99.9012 100.528 95.6164 102.291C91.3317 104.054 86.229 105 81 105C75.771 105 70.6683 104.054 66.3836 102.291C62.0988 100.528 58.839 98.0329 57.046 95.1435L61.8368 94.1148C63.2712 96.4263 65.879 98.4226 69.3068 99.833C72.7347 101.244 76.8168 102 81 102C85.1832 102 89.2653 101.244 92.6932 99.833C96.121 98.4226 98.7288 96.4263 100.163 94.1148L104.954 95.1435Z" fill="#1A1A16"/>
+<ellipse id="Beret" cx="115.371" cy="28.263" rx="34.5" ry="15" transform="rotate(10 115.371 28.263)" fill="#1A1A16"/>
+<circle id="Beret nub" cx="123" cy="4.5" r="4.5" fill="#1A1A16"/>
+</g>
+<defs>
+<filter id="filter0_dii_0_233" x="0" y="19.5" width="162" height="169.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="4.5" operator="erode" in="SourceAlpha" result="effect1_dropShadow_0_233"/>
+<feOffset dy="10.5"/>
+<feGaussianBlur stdDeviation="9"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_233"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_233" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="6"/>
+<feGaussianBlur stdDeviation="5.25"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_0_233"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-7.5"/>
+<feGaussianBlur stdDeviation="6.75"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="effect2_innerShadow_0_233" result="effect3_innerShadow_0_233"/>
+</filter>
+<linearGradient id="paint0_linear_0_233" x1="81" y1="27" x2="81" y2="165" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFE7A3"/>
+<stop offset="0.55" stop-color="#FDD26E"/>
+<stop offset="1" stop-color="#E5A92A"/>
+</linearGradient>
+</defs>
+</svg>

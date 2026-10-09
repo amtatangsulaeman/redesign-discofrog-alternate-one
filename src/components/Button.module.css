@@ -1,0 +1,65 @@
+/* Collins pill: 45px, 14px/400, -0.16px tracking, hover = scale(1.04) on expo-out */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 45px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: 96px;
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: -0.16px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn:hover {
+  transform: scale(1.04);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.solid {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.soft {
+  background: rgba(26, 26, 22, 0.07);
+  color: var(--ink);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--ink);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); /* standard last — the CSS compiler keeps only the final one */
+}
+
+.icon {
+  flex: none;
+  margin-right: -4px; /* optical: icons carry side bearing, keep the pill balanced */
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn:hover {
+    transition: none;
+    transform: none;
+  }
+}

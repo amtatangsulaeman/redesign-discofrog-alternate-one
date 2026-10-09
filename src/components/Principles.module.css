@@ -1,0 +1,115 @@
+/* staggered 4-up shelf, like /work's Shelf view */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  perspective: 1200px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 340 / 480;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: 20px;
+  color: var(--ink);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card:nth-child(2) {
+  margin-top: 56px;
+}
+
+.card:nth-child(3) {
+  margin-top: 112px;
+}
+
+.card:nth-child(4) {
+  margin-top: 40px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.label {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: rgba(26, 26, 22, 0.6);
+}
+
+.num {
+  font-size: max(40px, calc(var(--u) * 56));
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+
+.frog {
+  position: relative;
+  flex: 1 1 auto;
+  margin: 8px -6% 4px;
+  will-change: transform;
+}
+
+.frogHop {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 90%;
+  filter: drop-shadow(0 22px 26px rgba(26, 26, 22, 0.18));
+}
+
+.frogHop img {
+  object-fit: contain;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.text {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card:nth-child(n) {
+    margin-top: 0;
+  }
+
+  .card:nth-child(even) {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card:nth-child(n) {
+    margin-top: 0;
+    aspect-ratio: auto;
+    min-height: 380px;
+  }
+}

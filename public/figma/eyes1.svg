@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="89.25" height="38.25" viewBox="0 0 89.25 38.25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Eyes">
+<circle id="White L" cx="17.85" cy="17.85" r="17.85" fill="white"/>
+<ellipse id="Pupil L" cx="19.125" cy="18.4875" rx="8.925" ry="9.5625" fill="#1A1A16"/>
+<circle id="Shine L" cx="16.8938" cy="14.3438" r="2.86875" fill="white"/>
+<circle id="White R" cx="71.4" cy="17.85" r="17.85" fill="white"/>
+<ellipse id="Pupil R" cx="72.675" cy="18.4875" rx="8.925" ry="9.5625" fill="#1A1A16"/>
+<circle id="Shine R" cx="70.4438" cy="14.3438" r="2.86875" fill="white"/>
+</g>
+</svg>

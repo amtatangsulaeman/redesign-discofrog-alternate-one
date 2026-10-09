@@ -1,40 +1,118 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Palette (from Figma "Home — Revamp v2") */
+  --ink: #1a1a16;
+  --paper: #faf7fc;
+  --muted: #8a827e;
+  --muted-dark: #a49d98;
+  --line: #e4dee6;
+  --line-dark: #3a3a34;
+  --blue: #006ba6;
+  --yellow: #fdd26e;
+  --white: #ffffff;
+
+  /* 1 design px at 1440 wide — display type & layout scale with the viewport */
+  --u: calc(100vw / 1440);
+  --gutter: 40px;
+  --nav-h: 112px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ——— Type scale ———
+     One size per role, fluid from the mobile floor up to the 1440 design. Pair each with:
+       display   lh 1     ls -0.03em   section titles, page h1, closing CTAs
+       h2        lh 1.05  ls -0.02em   sub-section, panel, service and form titles
+       statement lh 1.18  ls -0.02em   big intro statements and quotes
+       h3        lh 1.15  ls -0.01em   card / list item titles
+       lede      lh 1.45               intro paragraphs, panel copy
+       body      lh 1.5                running text, addresses, descriptions
+       small     —                     tags, meta, form labels
+       label     500                   eyebrows, labels, buttons, chips (buttons/chips at 400)
+       caption   —                     hints, fine print; mono indices + counters (uppercase)
+     One-off display type (hero headline, CTA marquee, footer wordmark, big numerals) stays local. */
+  --fs-display: max(40px, calc(var(--u) * 80));
+  --fs-h2: max(32px, calc(var(--u) * 48));
+  --fs-statement: max(26px, calc(var(--u) * 40));
+  --fs-h3: max(22px, calc(var(--u) * 26));
+  --fs-lede: max(18px, calc(var(--u) * 20));
+  --fs-body: 16px;
+  --fs-small: 15px;
+  --fs-label: 14px;
+  --fs-caption: 13px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ——— Page theme (after wearecollins.com) ———
+   The whole page — not a box — dims to ink while "What we do" is in view.
+   Registered so the colours themselves animate and every section using them fades together. */
+@property --bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #faf7fc;
+}
+@property --fg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1a1a16;
+}
+@property --fg-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #8a827e;
+}
+@property --rule {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e4dee6;
+}
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1a1a16;
 }
 
 html {
-  height: 100%;
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-muted: var(--muted);
+  --rule: var(--line);
+  --accent: var(--ink);
+  transition: --bg 0.7s ease, --fg 0.7s ease, --fg-muted 0.7s ease, --rule 0.7s ease, --accent 0.7s ease;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html[data-theme="dark"] {
+  --bg: var(--ink);
+  --fg: var(--white);
+  --fg-muted: var(--muted-dark);
+  --rule: var(--line-dark);
+  --accent: var(--yellow);
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 800px) {
+  :root {
+    --gutter: 20px;
+    --nav-h: 88px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 400;
+  background: var(--bg);
+  overflow-x: clip;
 }
 
 a {
@@ -42,8 +120,20 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: none;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
 }

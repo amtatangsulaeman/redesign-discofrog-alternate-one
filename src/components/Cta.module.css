@@ -1,0 +1,67 @@
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  overflow: hidden;
+  padding: 96px 0;
+  background: var(--yellow);
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.unit {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 64);
+  padding-right: calc(var(--u) * 64);
+}
+
+.phrase {
+  font-size: max(64px, calc(var(--u) * 140));
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.star {
+  width: max(50px, calc(var(--u) * 110));
+  height: max(50px, calc(var(--u) * 110));
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 var(--gutter);
+}
+
+.prompt {
+  width: 440px;
+  max-width: 100%;
+  font-size: var(--fs-lede);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .end {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

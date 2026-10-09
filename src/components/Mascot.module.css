@@ -1,0 +1,11 @@
+.mascot {
+  position: relative;
+  transform-origin: 50% 85%;
+  will-change: transform;
+}
+
+.img {
+  object-fit: contain;
+  /* lifts the glossy frog off the dark footer */
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.45));
+}

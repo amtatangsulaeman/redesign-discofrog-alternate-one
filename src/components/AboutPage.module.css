@@ -1,0 +1,135 @@
+/* Same page frame + tokens as WorkIndex.module.css */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: max(80px, calc(var(--u) * 140));
+  padding: calc(var(--nav-h) + max(48px, calc(var(--u) * 80))) var(--gutter) max(80px, calc(var(--u) * 140));
+}
+
+/* first gap (header → intro) is tighter, like /work */
+.page > :first-child {
+  margin-bottom: calc(max(80px, calc(var(--u) * 140)) * -0.6);
+}
+
+/* ——— Intro: lede left, big statement right (case-study grid) ——— */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.lede {
+  max-width: 400px;
+  font-size: var(--fs-lede);
+  line-height: 1.45;
+}
+
+.statement {
+  font-size: var(--fs-statement);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+/* ——— Facts ——— */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  margin-top: calc(max(80px, calc(var(--u) * 140)) * -0.4);
+}
+
+.fact dt {
+  margin-bottom: 8px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+.fact dd {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+/* ——— Section blocks ——— */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.blockHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.num {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+/* ——— Offices ——— */
+.offices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.office {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--fs-body);
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.city {
+  margin-bottom: 10px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+.link {
+  width: fit-content;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: var(--blue);
+}
+
+@media (max-width: 1000px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .offices {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .blockHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

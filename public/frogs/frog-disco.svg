@@ -1,0 +1,56 @@
+<svg width="216" height="226" viewBox="0 0 216 226" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="Frog mascot">
+<g id="Name=Disco">
+<ellipse id="Foot L" cx="66" cy="181" rx="30" ry="15" fill="#2E9B48"/>
+<ellipse id="Foot R" cx="150" cy="181" rx="30" ry="15" fill="#2E9B48"/>
+<g id="Body" filter="url(#filter0_dii_32_2)">
+<path d="M148 10C170.091 10 188 27.9086 188 50C188 61.5246 183.124 71.9088 175.325 79.208C189.432 91.3902 198 107.428 198 125C198 163.108 157.706 194 108 194C58.2944 194 18 163.108 18 125C18 107.428 26.5669 91.3902 40.6738 79.208C32.8752 71.9088 28 61.5244 28 50C28 27.9086 45.9086 10 68 10C90.0914 10 108 27.9086 108 50C108 52.04 107.845 54.0441 107.551 56.002C107.7 56.0014 107.85 56 108 56C108.149 56 108.299 56.0014 108.448 56.002C108.154 54.0441 108 52.04 108 50C108 27.9086 125.909 10 148 10Z" fill="url(#paint0_linear_32_2)"/>
+</g>
+<ellipse id="Belly" cx="108" cy="149" rx="52" ry="31" fill="white" fill-opacity="0.28"/>
+<g id="Eyes">
+<circle id="White L" cx="66" cy="52" r="28" fill="white"/>
+<ellipse id="Pupil L" cx="68" cy="53" rx="14" ry="15" fill="#1A1A16"/>
+<circle id="Shine L" cx="64.5" cy="46.5" r="4.5" fill="white"/>
+<circle id="White R" cx="150" cy="52" r="28" fill="white"/>
+<ellipse id="Pupil R" cx="152" cy="53" rx="14" ry="15" fill="#1A1A16"/>
+<circle id="Shine R" cx="148.5" cy="46.5" r="4.5" fill="white"/>
+</g>
+<ellipse id="Cheek L" cx="54" cy="107" rx="14" ry="7" fill="#FF7A9A" fill-opacity="0.55"/>
+<ellipse id="Cheek R" cx="162" cy="107" rx="14" ry="7" fill="#FF7A9A" fill-opacity="0.55"/>
+<path id="Sparkle" d="M181 0L184.712 11.2877L196 15L184.712 18.7123L181 30L177.288 18.7123L166 15L177.288 11.2877L181 0Z" fill="#FDD26E"/>
+<path id="Mouth" d="M138 102C138 104.626 137.224 107.227 135.716 109.654C134.209 112.08 131.999 114.285 129.213 116.142C126.427 117.999 123.12 119.472 119.481 120.478C115.841 121.483 111.94 122 108 122C104.06 122 100.159 121.483 96.5195 120.478C92.8797 119.472 89.5726 117.999 86.7868 116.142C84.001 114.285 81.7913 112.08 80.2836 109.654C78.776 107.227 78 104.626 78 102L108 102H138Z" fill="#1A1A16"/>
+<ellipse id="Tongue" cx="108" cy="111" rx="12" ry="7" fill="#FF7A9A"/>
+<path id="Sparkle 2" d="M24 20L25.9799 26.0201L32 28L25.9799 29.9799L24 36L22.0201 29.9799L16 28L22.0201 26.0201L24 20Z" fill="#FDD26E"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_dii_32_2" x="0" y="0" width="216" height="226" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="6" operator="erode" in="SourceAlpha" result="effect1_dropShadow_32_2"/>
+<feOffset dy="14"/>
+<feGaussianBlur stdDeviation="12"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_32_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_32_2" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="8"/>
+<feGaussianBlur stdDeviation="7"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_32_2"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-10"/>
+<feGaussianBlur stdDeviation="9"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="effect2_innerShadow_32_2" result="effect3_innerShadow_32_2"/>
+</filter>
+<linearGradient id="paint0_linear_32_2" x1="108" y1="10" x2="108" y2="194" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9BE58A"/>
+<stop offset="0.55" stop-color="#5BC86A"/>
+<stop offset="1" stop-color="#2E9B48"/>
+</linearGradient>
+</defs>
+</svg>

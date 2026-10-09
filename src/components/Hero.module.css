@@ -1,0 +1,144 @@
+/* Gravity hero — one full screen; the physics floor is its bottom edge */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The resting layout the bodies start from */
+/* stickers along the top, intro card at the bottom, headline centred between them */
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: calc(var(--nav-h) + 64px) var(--gutter) 48px;
+}
+
+.stage [data-body] {
+  will-change: transform;
+}
+
+/* grab hints only where dragging works */
+@media (pointer: fine) {
+  .stage [data-body] {
+    cursor: grab;
+  }
+
+  .stage[data-dragging] [data-body] {
+    cursor: grabbing;
+  }
+}
+
+/* ——— Sticker tiles ——— */
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tile {
+  position: relative;
+  width: max(88px, calc(var(--u) * 176));
+  height: max(88px, calc(var(--u) * 176));
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.tileInner {
+  position: absolute;
+  inset: 0;
+}
+
+.tilePhoto {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.tileArt {
+  object-fit: contain;
+  padding: 16%;
+  pointer-events: none;
+}
+
+/* the 3D frogs fill their sticker — the renders already carry a little margin */
+.tileFrog {
+  object-fit: contain;
+  padding: 5%;
+  pointer-events: none;
+}
+
+/* ——— Headline: plain text, centred, static ——— */
+.headline {
+  position: absolute;
+  z-index: 2;
+  /* sits high enough that the settled pile never reaches the second line */
+  top: 42%;
+  left: var(--gutter);
+  right: var(--gutter);
+  translate: 0 -50%;
+  pointer-events: none; /* drags reach the pile underneath */
+  font-weight: 500;
+  font-size: max(44px, calc(var(--u) * 112));
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: var(--ink);
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.headlineMask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.headlineLine {
+  display: block;
+}
+
+/* ——— Description card ——— */
+.card {
+  /* grows with the type so the text never crowds the edges on wide screens */
+  width: min(max(460px, calc(var(--u) * 520)), calc(100vw - 2 * var(--gutter)));
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.cardInner {
+  padding: 0.95em 1.35em 1em;
+  font-size: var(--fs-lede);
+  line-height: 1.45;
+}
+
+.cardInner strong {
+  font-weight: 500;
+  color: var(--yellow);
+}
+
+@media (max-width: 800px) {
+  .layout {
+    padding-top: calc(var(--nav-h) + 56px);
+    padding-bottom: 32px;
+  }
+
+  .headline {
+    top: 52%;
+  }
+}

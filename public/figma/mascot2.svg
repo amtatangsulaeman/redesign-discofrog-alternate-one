@@ -1,0 +1,53 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="162" height="174" viewBox="0 0 162 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mascot">
+<ellipse id="Foot L" cx="49.5" cy="140.25" rx="22.5" ry="11.25" fill="#E25C8A"/>
+<ellipse id="Foot R" cx="112.5" cy="140.25" rx="22.5" ry="11.25" fill="#E25C8A"/>
+<g id="Body" filter="url(#filter0_dii_0_741)">
+<path d="M111 12C127.569 12 141 25.4315 141 42C141 50.6435 137.342 58.4309 131.493 63.9053C142.074 73.042 148.5 85.0707 148.5 98.25C148.5 126.831 118.279 150 81 150C43.7208 150 13.5 126.831 13.5 98.25C13.5 85.071 19.9253 73.042 30.5059 63.9053C24.6569 58.4309 21 50.6432 21 42C21 25.4315 34.4315 12 51 12C67.5685 12 81 25.4315 81 42C81 43.5298 80.884 45.0327 80.6631 46.501C80.7753 46.5006 80.8876 46.5 81 46.5C81.112 46.5 81.224 46.5006 81.3359 46.501C81.115 45.0328 81 43.5298 81 42C81 25.4315 94.4315 12 111 12Z" fill="url(#paint0_linear_0_741)"/>
+</g>
+<ellipse id="Belly" cx="81" cy="116.25" rx="39" ry="23.25" fill="white" fill-opacity="0.28"/>
+<g id="Eyes">
+<circle id="White L" cx="49.5" cy="43.5" r="21" fill="white"/>
+<ellipse id="Pupil L" cx="51" cy="44.25" rx="10.5" ry="11.25" fill="#1A1A16"/>
+<circle id="Shine L" cx="48.375" cy="39.375" r="3.375" fill="white"/>
+<circle id="White R" cx="112.5" cy="43.5" r="21" fill="white"/>
+<ellipse id="Pupil R" cx="114" cy="44.25" rx="10.5" ry="11.25" fill="#1A1A16"/>
+<circle id="Shine R" cx="111.375" cy="39.375" r="3.375" fill="white"/>
+</g>
+<ellipse id="Cheek L" cx="40.5" cy="84.75" rx="10.5" ry="5.25" fill="#FF7A9A" fill-opacity="0.55"/>
+<ellipse id="Cheek R" cx="121.5" cy="84.75" rx="10.5" ry="5.25" fill="#FF7A9A" fill-opacity="0.55"/>
+<path id="Mouth" d="M104.954 80.1435C103.161 83.0329 99.9012 85.5282 95.6164 87.2913C91.3317 89.0544 86.229 90 81 90C75.771 90 70.6683 89.0544 66.3836 87.2913C62.0988 85.5282 58.839 83.0329 57.046 80.1435L61.8368 79.1148C63.2712 81.4263 65.879 83.4226 69.3068 84.833C72.7347 86.2435 76.8168 87 81 87C85.1832 87 89.2653 86.2435 92.6932 84.833C96.121 83.4226 98.7288 81.4263 100.163 79.1148L104.954 80.1435Z" fill="#1A1A16"/>
+<path id="Headband" d="M12.7149 42.2612C16.6059 30.17 25.4274 19.455 37.7901 11.8038C50.1527 4.1526 65.3541 -1.48863e-07 81 0C96.6459 1.48863e-07 111.847 4.1526 124.21 11.8038C136.573 19.455 145.394 30.17 149.285 42.2612L142.457 43.6601C138.955 32.778 131.015 23.1345 119.889 16.2484C108.763 9.36234 95.0813 5.625 81 5.625C66.9187 5.625 53.2375 9.36234 42.111 16.2484C30.9846 23.1345 23.0453 32.778 19.5434 43.6601L12.7149 42.2612Z" fill="#1A1A16"/>
+<ellipse id="Ear L" cx="15.75" cy="66" rx="9.75" ry="16.5" fill="#1A1A16"/>
+<ellipse id="Ear R" cx="146.25" cy="66" rx="9.75" ry="16.5" fill="#1A1A16"/>
+</g>
+<defs>
+<filter id="filter0_dii_0_741" x="0" y="4.5" width="162" height="169.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="4.5" operator="erode" in="SourceAlpha" result="effect1_dropShadow_0_741"/>
+<feOffset dy="10.5"/>
+<feGaussianBlur stdDeviation="9"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_741"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_741" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="6"/>
+<feGaussianBlur stdDeviation="5.25"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_0_741"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-7.5"/>
+<feGaussianBlur stdDeviation="6.75"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="effect2_innerShadow_0_741" result="effect3_innerShadow_0_741"/>
+</filter>
+<linearGradient id="paint0_linear_0_741" x1="81" y1="12" x2="81" y2="150" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC2D5"/>
+<stop offset="0.55" stop-color="#FF8FB1"/>
+<stop offset="1" stop-color="#E25C8A"/>
+</linearGradient>
+</defs>
+</svg>

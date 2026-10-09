@@ -1,0 +1,55 @@
+<svg width="216" height="226" viewBox="0 0 216 226" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="Frog mascot">
+<g id="Name=Hopper">
+<ellipse id="Foot L" cx="66" cy="181" rx="30" ry="15" fill="#159883"/>
+<ellipse id="Foot R" cx="150" cy="181" rx="30" ry="15" fill="#159883"/>
+<g id="Body" filter="url(#filter0_dii_32_2)">
+<path d="M148 10C170.091 10 188 27.9086 188 50C188 61.5246 183.124 71.9088 175.325 79.208C189.432 91.3902 198 107.428 198 125C198 163.108 157.706 194 108 194C58.2944 194 18 163.108 18 125C18 107.428 26.5669 91.3902 40.6738 79.208C32.8752 71.9088 28 61.5244 28 50C28 27.9086 45.9086 10 68 10C90.0914 10 108 27.9086 108 50C108 52.04 107.845 54.0441 107.551 56.002C107.7 56.0014 107.85 56 108 56C108.149 56 108.299 56.0014 108.448 56.002C108.154 54.0441 108 52.04 108 50C108 27.9086 125.909 10 148 10Z" fill="url(#paint0_linear_32_2)"/>
+</g>
+<ellipse id="Belly" cx="108" cy="149" rx="52" ry="31" fill="white" fill-opacity="0.28"/>
+<g id="Eyes">
+<circle id="White L" cx="66" cy="52" r="28" fill="white"/>
+<ellipse id="Pupil L" cx="68" cy="53" rx="14" ry="15" fill="#1A1A16"/>
+<circle id="Shine L" cx="64.5" cy="46.5" r="4.5" fill="white"/>
+<circle id="White R" cx="150" cy="52" r="28" fill="white"/>
+<ellipse id="Pupil R" cx="152" cy="53" rx="14" ry="15" fill="#1A1A16"/>
+<circle id="Shine R" cx="148.5" cy="46.5" r="4.5" fill="white"/>
+</g>
+<ellipse id="Cheek L" cx="54" cy="107" rx="14" ry="7" fill="#FF7A9A" fill-opacity="0.55"/>
+<ellipse id="Cheek R" cx="162" cy="107" rx="14" ry="7" fill="#FF7A9A" fill-opacity="0.55"/>
+<path id="Mouth" d="M139.939 100.858C137.548 104.711 133.202 108.038 127.489 110.388C121.776 112.739 114.972 114 108 114C101.028 114 94.2244 112.739 88.5114 110.388C82.7984 108.038 78.452 104.711 76.0613 100.858L82.4491 99.4864C84.3616 102.568 87.8387 105.23 92.4091 107.111C96.9796 108.991 102.422 110 108 110C113.578 110 119.02 108.991 123.591 107.111C128.161 105.23 131.638 102.568 133.551 99.4864L139.939 100.858Z" fill="#1A1A16"/>
+<circle id="Badge" cx="148" cy="150" r="20.5" fill="#FDD26E" stroke="white" stroke-width="3"/>
+<path id="Rank" d="M141.552 154.048L143.248 142.496H144.872L143.168 154.048H141.552ZM137.944 154.048L139.648 142.496H141.272L139.568 154.048H137.944ZM136.392 151.144L136.656 149.536H145.888L145.64 151.144H136.392ZM136.968 147.2L137.208 145.592H146.44L146.2 147.2H136.968ZM150.394 154V145.336L148.674 146.584L147.522 145.112L151.122 142.544H152.562V154H150.394Z" fill="#1A1A16"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_dii_32_2" x="0" y="0" width="216" height="226" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="6" operator="erode" in="SourceAlpha" result="effect1_dropShadow_32_2"/>
+<feOffset dy="14"/>
+<feGaussianBlur stdDeviation="12"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_32_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_32_2" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="8"/>
+<feGaussianBlur stdDeviation="7"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_32_2"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-10"/>
+<feGaussianBlur stdDeviation="9"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="effect2_innerShadow_32_2" result="effect3_innerShadow_32_2"/>
+</filter>
+<linearGradient id="paint0_linear_32_2" x1="108" y1="10" x2="108" y2="194" gradientUnits="userSpaceOnUse">
+<stop stop-color="#93EEDD"/>
+<stop offset="0.55" stop-color="#3CC9B4"/>
+<stop offset="1" stop-color="#159883"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,452 @@
+/* Same frame + tokens as /work and /about */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: max(40px, calc(var(--u) * 72));
+  padding: calc(var(--nav-h) + max(48px, calc(var(--u) * 80))) var(--gutter) max(80px, calc(var(--u) * 140));
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: max(32px, calc(var(--u) * 64));
+  align-items: start;
+}
+
+/* ——— Info column ——— */
+.info {
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* sidebar intro: h3 size so it supports the form instead of competing with it */
+.statement {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.promise {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 96px;
+  background: color-mix(in srgb, var(--blue) 10%, transparent);
+  color: var(--blue);
+  font-size: var(--fs-label);
+  font-weight: 500;
+}
+
+.small {
+  display: block;
+  margin-bottom: 10px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+.quickRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: var(--fs-body);
+  transition: color 0.2s;
+}
+
+.mailLink:hover {
+  color: var(--blue);
+}
+
+.offices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.offices address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.frog {
+  width: 140px;
+  margin-top: -8px;
+}
+
+.frog img {
+  width: 100%;
+  height: auto;
+}
+
+/* ——— Form card ——— */
+.card {
+  padding: max(24px, calc(var(--u) * 56));
+  border: 1px solid var(--rule);
+  border-radius: 24px;
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* min-height keeps the card from jumping between short and long steps */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-height: 600px;
+}
+
+/* ——— progress ——— */
+.progress {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  list-style: none;
+}
+
+.progress li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.bar {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--line);
+  transition: background-color 0.5s;
+}
+
+.now .bar {
+  background: var(--yellow);
+}
+
+.past .bar {
+  background: var(--ink);
+}
+
+.stepName,
+.stepLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.now .stepName {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.stepLink {
+  color: var(--ink);
+  transition: opacity 0.2s;
+}
+
+.stepLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ——— step panel ——— */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.formTitle:focus {
+  outline: none;
+}
+
+.formHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formSub {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.formTitle {
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* a <legend> is not a flex item, so a flex gap never reached it — space it explicitly */
+.fieldset {
+  min-width: 0;
+  border: 0;
+}
+
+.fieldset > legend {
+  margin-bottom: 14px;
+}
+
+.hint {
+  margin-top: -2px;
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.label {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.opt {
+  margin-left: 6px;
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  height: 52px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  font: inherit;
+  font-size: var(--fs-body); /* ≥16px so iOS doesn't zoom on focus */
+  color: var(--ink);
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.input::placeholder {
+  color: #a8a19d;
+}
+
+.input:hover {
+  border-color: #cfc8d2;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(253, 210, 110, 0.55);
+}
+
+.input[aria-invalid="true"] {
+  border-color: #c2410c;
+  background: #fff8f4;
+}
+
+.textarea {
+  height: auto;
+  min-height: 176px;
+  padding: 16px 18px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.under {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.count {
+  flex: none;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.error {
+  font-size: var(--fs-label);
+  color: #c2410c;
+}
+
+/* chips — same pill metrics as the buttons */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 96px;
+  font-size: var(--fs-label);
+  letter-spacing: -0.16px;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.chip:hover {
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.chip.on {
+  background: var(--yellow);
+  box-shadow: inset 0 0 0 1px var(--yellow);
+}
+
+.chip:active {
+  transform: scale(0.97);
+}
+
+.chip:focus-visible,
+.textBtn:focus-visible,
+.stepLink:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  margin-top: auto; /* actions sit at the bottom of the card on every step */
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.fine {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+
+/* ——— Thank-you state ——— */
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  outline: none;
+}
+
+.doneFrog {
+  width: 120px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.doneTitle {
+  font-size: var(--fs-h2);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.doneText {
+  max-width: 520px;
+  font-size: var(--fs-lede);
+  line-height: 1.45;
+}
+
+.doneText a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.doneRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.textBtn {
+  font-size: var(--fs-label);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* small screens: form right after the quick contacts, addresses below it */
+  .info {
+    display: contents;
+  }
+
+  .card {
+    order: 1;
+  }
+
+  /* the footer right below lists the same offices */
+  .offices {
+    display: none;
+  }
+
+  .form {
+    gap: 32px;
+    min-height: 0;
+  }
+
+  .frog {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .offices {
+    grid-template-columns: 1fr;
+  }
+}

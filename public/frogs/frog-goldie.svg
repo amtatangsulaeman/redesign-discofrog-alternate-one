@@ -1,0 +1,55 @@
+<svg width="216" height="252" viewBox="0 0 216 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="Frog mascot">
+<g id="Name=Goldie">
+<ellipse id="Foot L" cx="66" cy="207" rx="30" ry="15" fill="#E5A92A"/>
+<ellipse id="Foot R" cx="150" cy="207" rx="30" ry="15" fill="#E5A92A"/>
+<g id="Body" filter="url(#filter0_dii_32_2)">
+<path d="M148 36C170.091 36 188 53.9086 188 76C188 87.5246 183.124 97.9088 175.325 105.208C189.432 117.39 198 133.428 198 151C198 189.108 157.706 220 108 220C58.2944 220 18 189.108 18 151C18 133.428 26.5669 117.39 40.6738 105.208C32.8752 97.9088 28 87.5244 28 76C28 53.9086 45.9086 36 68 36C90.0914 36 108 53.9086 108 76C108 78.04 107.845 80.0441 107.551 82.002C107.7 82.0014 107.85 82 108 82C108.149 82 108.299 82.0014 108.448 82.002C108.154 80.0441 108 78.04 108 76C108 53.9086 125.909 36 148 36Z" fill="url(#paint0_linear_32_2)"/>
+</g>
+<ellipse id="Belly" cx="108" cy="175" rx="52" ry="31" fill="white" fill-opacity="0.28"/>
+<g id="Eyes">
+<circle id="White L" cx="66" cy="78" r="28" fill="white"/>
+<ellipse id="Pupil L" cx="68" cy="79" rx="14" ry="15" fill="#1A1A16"/>
+<circle id="Shine L" cx="64.5" cy="72.5" r="4.5" fill="white"/>
+<circle id="White R" cx="150" cy="78" r="28" fill="white"/>
+<ellipse id="Pupil R" cx="152" cy="79" rx="14" ry="15" fill="#1A1A16"/>
+<circle id="Shine R" cx="148.5" cy="72.5" r="4.5" fill="white"/>
+</g>
+<ellipse id="Cheek L" cx="54" cy="133" rx="14" ry="7" fill="#FF7A9A" fill-opacity="0.55"/>
+<ellipse id="Cheek R" cx="162" cy="133" rx="14" ry="7" fill="#FF7A9A" fill-opacity="0.55"/>
+<path id="Mouth" d="M139.939 126.858C137.548 130.711 133.202 134.038 127.489 136.388C121.776 138.739 114.972 140 108 140C101.028 140 94.2244 138.739 88.5114 136.388C82.7984 134.038 78.452 130.711 76.0613 126.858L82.4491 125.486C84.3616 128.568 87.8387 131.23 92.4091 133.111C96.9796 134.991 102.422 136 108 136C113.578 136 119.02 134.991 123.591 133.111C128.161 131.23 131.638 128.568 133.551 125.486L139.939 126.858Z" fill="#1A1A16"/>
+<ellipse id="Beret" cx="153.828" cy="37.684" rx="46" ry="20" transform="rotate(10 153.828 37.684)" fill="#1A1A16"/>
+<circle id="Beret nub" cx="164" cy="6" r="6" fill="#1A1A16"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_dii_32_2" x="0" y="26" width="216" height="226" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="6" operator="erode" in="SourceAlpha" result="effect1_dropShadow_32_2"/>
+<feOffset dy="14"/>
+<feGaussianBlur stdDeviation="12"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_32_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_32_2" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="8"/>
+<feGaussianBlur stdDeviation="7"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_32_2"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-10"/>
+<feGaussianBlur stdDeviation="9"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="effect2_innerShadow_32_2" result="effect3_innerShadow_32_2"/>
+</filter>
+<linearGradient id="paint0_linear_32_2" x1="108" y1="36" x2="108" y2="220" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFE7A3"/>
+<stop offset="0.55" stop-color="#FDD26E"/>
+<stop offset="1" stop-color="#E5A92A"/>
+</linearGradient>
+</defs>
+</svg>

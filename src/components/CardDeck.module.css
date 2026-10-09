@@ -1,0 +1,63 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: max(40px, calc(var(--u) * 56));
+  margin-top: max(48px, calc(var(--u) * 72));
+}
+
+.deck {
+  position: relative;
+  width: min(560px, 72vw);
+  aspect-ratio: 1344 / 945;
+  /* the back cards sit up to 12% lower than the box — keep the hint clear of them */
+  margin-bottom: calc(min(560px, 72vw) * 945 / 1344 * 0.14);
+  cursor: grab;
+  touch-action: pan-y; /* vertical swipes still scroll the page; horizontal ones drag the card */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.deck:active {
+  cursor: grabbing;
+}
+
+.deck:focus-visible {
+  outline: none;
+}
+
+.deck:focus-visible .card:first-child,
+.deck:focus-visible {
+  border-radius: 16px;
+}
+
+.deck:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 2px solid var(--blue);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--line);
+  box-shadow: 0 24px 48px rgba(26, 26, 22, 0.14);
+  will-change: transform;
+}
+
+.img {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.hint {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--muted);
+}

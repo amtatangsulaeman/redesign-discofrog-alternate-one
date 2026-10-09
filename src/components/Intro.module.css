@@ -1,0 +1,41 @@
+.intro {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: max(96px, calc(var(--u) * 160)) var(--gutter);
+}
+
+.label {
+  flex: 0 0 calc(var(--u) * 320);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.statement {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.text {
+  max-width: calc(var(--u) * 1000);
+  font-size: var(--fs-statement);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 800px) {
+  .intro {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text {
+    max-width: none;
+  }
+}

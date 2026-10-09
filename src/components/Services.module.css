@@ -1,0 +1,220 @@
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  padding: max(80px, calc(var(--u) * 140)) var(--gutter);
+  /* no background of its own: the whole page dims to ink while this section is in view */
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--rule);
+  padding: 0 24px;
+  transition: background-color 0.4s;
+}
+
+.item:hover,
+.item:has(.row:focus-visible),
+.open {
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+
+/* clear keyboard focus on the dark background */
+.row:focus-visible {
+  outline: none;
+}
+
+.item:has(.row:focus-visible) {
+  box-shadow: inset 0 0 0 2px var(--accent);
+  border-radius: 6px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
+  padding: 36px 0;
+  text-align: left;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.num {
+  font-size: var(--fs-caption);
+  font-family: var(--font-mono), monospace;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  transition: transform 0.6s var(--ease-out-expo), color 0.3s;
+}
+
+.item:hover .title,
+.row:focus-visible .title {
+  transform: translateX(12px);
+}
+
+.open .title {
+  color: var(--accent);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.summary {
+  width: 340px;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* hover / focus: just the ring lights up — the yellow fill is reserved for the open row */
+.item:hover .arrow,
+.row:focus-visible .arrow {
+  border-color: var(--accent);
+}
+
+.open .arrow,
+.open:hover .arrow {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--ink);
+}
+
+.arrowGlyph {
+  display: grid;
+  place-items: center;
+}
+
+/* Expanding body */
+.body {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.body[hidden] {
+  display: none;
+}
+
+.bodyInner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 0 40px 56px;
+}
+
+.bodyText {
+  width: 560px;
+  max-width: 100%;
+  font-size: var(--fs-lede);
+  line-height: 1.45;
+}
+
+.list {
+  list-style: none;
+  font-size: var(--fs-lede);
+  font-weight: 500;
+  line-height: 1.75;
+  white-space: nowrap;
+}
+
+/* Peeking frog — Figma: 150px mascot rotated 8°, at (1143, 166) in the row */
+.mascotWrap {
+  position: absolute;
+  right: calc(var(--u) * 56);
+  top: 176px;
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+}
+
+.mascot {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.mascot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.35));
+}
+
+.divider {
+  height: 1px;
+  background: var(--rule);
+}
+
+@media (max-width: 1100px) {
+  .summary {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .item {
+    padding: 0 4px;
+  }
+
+  .row {
+    padding: 24px 0;
+  }
+
+  .left {
+    gap: 16px;
+    white-space: normal;
+  }
+
+  .arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .bodyInner {
+    gap: 16px;
+    padding: 0 0 140px;
+  }
+
+  .mascotWrap {
+    top: auto;
+    bottom: -40px;
+    right: 8px;
+  }
+}

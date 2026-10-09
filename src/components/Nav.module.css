@@ -1,0 +1,293 @@
+/* Fixed header in the style of clou.ch: badge · frosted link pill · round menu button */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--nav-h);
+  pointer-events: none; /* only the controls catch clicks */
+}
+
+.nav > * {
+  pointer-events: auto;
+}
+
+/* ——— Logo: the original Discofrog wordmark, centred on the menu button's row ——— */
+.logo {
+  position: absolute;
+  top: 33px;
+  left: var(--gutter);
+  z-index: 2;
+  display: block;
+}
+
+.logoMark {
+  display: block;
+  width: 151px;
+  height: 46px;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+/* ——— Frosted link pill ——— */
+.panel {
+  position: absolute;
+  top: 31px;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  padding: 4px;
+  border-radius: 160px;
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px); /* standard last — the CSS compiler keeps only the final one */
+  transition: opacity 0.4s, translate 0.6s var(--ease-out-expo), background-color 0.7s;
+}
+
+/* page theme dimmed (Collins-style) → dark frosted pill, light links */
+:global(html[data-theme="dark"]) .panel {
+  background: rgba(26, 26, 22, 0.55);
+}
+
+:global(html[data-theme="dark"]) .link {
+  color: var(--white);
+}
+
+:global(html[data-theme="dark"]) .link:hover,
+:global(html[data-theme="dark"]) .link:focus-visible,
+:global(html[data-theme="dark"]) .active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 8px 16px;
+  border-radius: 48px;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: background-color 0.2s, padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    gap 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* coloured dot slides in on hover / for the section in view */
+.dot {
+  width: 0;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+  transform: scale(0);
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.link:hover,
+.link:focus-visible,
+.active {
+  gap: 8px;
+  padding-left: 14px;
+  background: #f5f7f6;
+}
+
+.link:hover .dot,
+.link:focus-visible .dot,
+.active .dot {
+  width: 8px;
+  transform: scale(1);
+}
+
+/* ——— Menu button ——— */
+.menuButton {
+  position: absolute;
+  top: 32px;
+  right: 16px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  /* keeps the button visible over the dark sections */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menuButton:hover {
+  transform: scale(1.08);
+}
+
+.menuButton > svg {
+  grid-area: 1 / 1;
+  transition: opacity 0.3s, transform 0.5s var(--ease-out-expo);
+}
+
+.iconClose {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.isOpen .iconMenu {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+
+.isOpen .iconClose {
+  opacity: 1;
+  transform: none;
+}
+
+/* the badge goes dark-on-light → light-on-dark over the open menu */
+/* white wordmark over the dark menu and dark sections */
+.onDark .logoMark,
+.isOpen .logoMark,
+:global(html[data-theme="dark"]) .logoMark {
+  filter: invert(1);
+}
+
+.isOpen .panel {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ——— Full-screen menu ——— */
+.overlay {
+  --wipe: 0%;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 150px 0 24px;
+  background: #0b0c0e;
+  color: #d4d4d4;
+  visibility: hidden;
+  /* circle wipe centred on the menu button */
+  clip-path: circle(var(--wipe) at calc(100% - 40px) 56px);
+}
+
+.items {
+  list-style: none;
+}
+
+.item {
+  position: relative;
+}
+
+.itemLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  transform-origin: left;
+}
+
+.itemLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px var(--gutter) 14px;
+  overflow: hidden;
+  font-size: max(52px, calc(var(--u) * 112));
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  transition: color 0.35s;
+}
+
+/* hover: the row floods with brand yellow from below */
+.itemFill {
+  position: absolute;
+  inset: 0;
+  background: var(--yellow);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.55s var(--ease-out-expo);
+}
+
+.itemLink:hover .itemFill,
+.itemLink:focus-visible .itemFill {
+  transform: scaleY(1);
+}
+
+.itemLink:hover,
+.itemLink:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
+/* hover nudge lives on the mask — GSAP owns .itemText's transform for the intro */
+.itemMask {
+  position: relative; /* above the fill */
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  transition: translate 0.55s var(--ease-out-expo);
+}
+
+.itemLink:hover .itemMask {
+  translate: 0.12em 0;
+}
+
+.itemText {
+  display: block;
+}
+
+.overlayFoot {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  padding: 0 16px;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.overlayFoot a:hover {
+  color: var(--yellow);
+}
+
+@media (max-width: 800px) {
+  .logo {
+    top: 26px;
+  }
+
+  .logoMark {
+    width: 118px;
+    height: 36px;
+  }
+
+  .panel {
+    display: none;
+  }
+
+  .menuButton {
+    top: 20px;
+    right: 12px;
+  }
+
+  .overlay {
+    padding-top: 110px;
+    clip-path: circle(var(--wipe) at calc(100% - 36px) 44px);
+  }
+
+  .itemLink,
+  .item:nth-child(odd) .itemLink,
+  .item:nth-child(even) .itemLink {
+    justify-content: flex-start;
+    translate: none;
+  }
+
+  .overlayFoot {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
