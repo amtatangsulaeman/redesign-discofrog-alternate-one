@@ -23,7 +23,7 @@ const WHEN = ["As soon as possible", "In 1–3 months", "Later this year", "Just
 const MAX = 1000;
 
 const STEPS = [
-  { label: "Your needs", title: "What can we help with?", sub: "Pick anything that fits — takes about two minutes in total." },
+  { label: "Your needs", title: "What can we help with?", sub: "Pick anything that fits. It takes about two minutes in total." },
   { label: "The project", title: "Tell us a little more", sub: "A few lines is plenty. We’ll ask the rest on a call." },
   { label: "Your details", title: "Where should we reply?", sub: "We reply within one business day." },
 ] as const;
@@ -37,8 +37,8 @@ function validate(f: { name: string; email: string; details: string }): Errors {
   const e: Errors = {};
   if (!f.name.trim()) e.name = "Please tell us your name.";
   if (!f.email.trim()) e.email = "We need an email to reply to.";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = "That email doesn’t look right — check for typos.";
-  if (f.details.trim().length < 20) e.details = "A sentence or two helps us prepare — at least 20 characters.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = "That email doesn’t look right. Check for typos.";
+  if (f.details.trim().length < 20) e.details = "A sentence or two helps us prepare (at least 20 characters).";
   return e;
 }
 
@@ -106,7 +106,7 @@ export default function ContactPage() {
   const toggleNeed = (n: string) => setNeeds((s) => (s.includes(n) ? s.filter((x) => x !== n) : [...s, n]));
 
   const send = () => {
-    const subject = `New project — ${form.company.trim() || form.name.trim()}`;
+    const subject = `New project: ${form.company.trim() || form.name.trim()}`;
     const meta = [
       `Name: ${form.name.trim()}`,
       `Email: ${form.email.trim()}`,
@@ -174,13 +174,13 @@ export default function ContactPage() {
 
   return (
     <section ref={root} className={styles.page}>
-      <SectionHeader eyebrow="Contact  —  Jakarta & Melbourne" title="Let’s talk" code="Hi." />
+      <SectionHeader eyebrow="Contact  /  Jakarta & Melbourne" title="Let’s talk" code="Hi." />
 
       <div className={styles.layout}>
         {/* ——— Info column ——— */}
         <aside className={styles.info}>
           <p className={styles.statement} data-fade>
-            Tell us where you are and where you want to go. We’ll come back with ideas — and honest advice on what it
+            Tell us where you are and where you want to go. We’ll come back with ideas and honest advice on what it
             takes.
           </p>
           <p className={styles.promise} data-fade>
@@ -225,7 +225,7 @@ export default function ContactPage() {
               <Image src="/frogs/frog-hopper.svg" alt="" width={140} height={146} className={styles.doneFrog} />
               <h2 className={styles.doneTitle}>Thanks, {form.name.trim().split(" ")[0]}!</h2>
               <p className={styles.doneText}>
-                Your email app should have opened with everything filled in — just press send. We’ll reply to{" "}
+                Your email app should have opened with everything filled in. Just press send. We’ll reply to{" "}
                 <strong>{form.email.trim()}</strong> within one business day.
               </p>
               <p className={styles.doneText}>
@@ -254,7 +254,7 @@ export default function ContactPage() {
                     {i < step ? (
                       <button type="button" className={styles.stepLink} onClick={() => goTo(i)}>
                         <Check size={13} strokeWidth={2.5} aria-hidden /> {p.label}
-                        <span className={styles.sr}> — completed, edit</span>
+                        <span className={styles.sr}> (completed, edit)</span>
                       </button>
                     ) : (
                       <span className={styles.stepName} aria-current={i === step ? "step" : undefined}>

@@ -126,7 +126,7 @@ export async function drawProjectScreen(canvas: HTMLCanvasElement, fontFamily: s
   // Section header
   ctx.fillStyle = C.muted;
   ctx.font = `500 14px ${f}`;
-  ctx.fillText("Explore  01  —  Portfolio", pad, 150);
+  ctx.fillText("Explore  01  /  Portfolio", pad, 150);
   ctx.fillStyle = C.ink;
   ctx.font = `500 76px ${f}`;
   ctx.letterSpacing = "-2px";

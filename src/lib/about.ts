@@ -6,7 +6,7 @@
  */
 export const ABOUT = {
   statement:
-    "We’re Discofrog — an independent design studio in Jakarta and Melbourne. We turn fresh ideas into brands people remember and websites that work hard for them.",
+    "We’re Discofrog, an independent design studio in Jakarta and Melbourne. We turn fresh ideas into brands people remember and websites that work hard for them.",
   lede: "Branding, web design and development, made by one small team from first sketch to launch.",
 
   facts: [
@@ -21,7 +21,7 @@ export const ABOUT = {
       label: "Vision",
       frog: "/frogs/frog-goldie.svg", tint: "#fdefc4",
       title: "Work that leaves a mark.",
-      text: "We want every project to make a real difference for our clients — and to be an experience their customers enjoy.",
+      text: "We want every project to make a real difference for our clients, and to be an experience their customers enjoy.",
     },
     {
       label: "Mission",
@@ -33,7 +33,7 @@ export const ABOUT = {
       label: "Expertise",
       frog: "/frogs/frog-hopper.svg", tint: "#d6f3ec",
       title: "Websites and apps that stand out.",
-      text: "Distinctive, high-performance sites and apps — designed with care and built to last.",
+      text: "Distinctive, high-performance sites and apps, designed with care and built to last.",
     },
     {
       label: "Approach",

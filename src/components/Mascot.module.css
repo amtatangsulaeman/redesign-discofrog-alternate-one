@@ -5,7 +5,16 @@
 }
 
 .img {
-  object-fit: contain;
+  position: absolute;
+  inset: 0;
+  display: block;
   /* lifts the glossy frog off the dark footer */
   filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.45));
+}
+
+.img svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }

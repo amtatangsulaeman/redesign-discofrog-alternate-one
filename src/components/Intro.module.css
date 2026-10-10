@@ -35,6 +35,11 @@
     gap: 20px;
   }
 
+  /* stacked: the desktop column width would otherwise become a tall empty gap */
+  .label {
+    flex: none;
+  }
+
   .text {
     max-width: none;
   }

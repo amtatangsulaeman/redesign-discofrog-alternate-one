@@ -9,38 +9,21 @@ import styles from "./Nav.module.css";
 
 /** Nav modelled on clou.ch: logo · frosted link pill · round menu button → full-screen menu */
 const LINKS = [
-  { label: "Work", href: "/work", section: "#work" },
-  { label: "About us", href: "/about", section: "#studio" },
-  { label: "Services", href: "/#services", section: "#services" },
-  { label: "Contact", href: "/contact", section: "#contact" },
+  { label: "Work", href: "/work" },
+  { label: "About us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Contact", href: "/contact" },
 ];
 
-/** `current`: section the page belongs to (e.g. "#work" on /work pages); home leaves it unset
- *  and follows the section in view. Passed as a prop — reading the URL here would make every
- *  prerendered route dynamic under cacheComponents. */
+/** `current`: the page the visitor is on, as one of the links' hrefs (e.g. "/work" on /work and
+ *  its case pages). The nav only marks where you are — home has no link, so nothing is marked
+ *  there. Passed as a prop: reading the URL here would make every prerendered route dynamic
+ *  under cacheComponents. */
 export default function Nav({ current }: { current?: string } = {}) {
   const root = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
-  const [sectionInView, setActive] = useState<string | null>(null);
-  const active = current ?? sectionInView;
   const [onDark, setOnDark] = useState(false);
   const tl = useRef<gsap.core.Timeline | null>(null);
-
-  // Highlight the link of the section currently in view
-  useEffect(() => {
-    const sections = LINKS.map((l) => document.querySelector(l.section)).filter(Boolean) as Element[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          const id = `#${e.target.id}`;
-          setActive((prev) => (e.isIntersecting ? id : prev === id ? null : prev));
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px" },
-    );
-    sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
-  }, []);
 
   // Full-screen menu: circle wipe out of the menu button, then the big links rise in
   useGSAP(
@@ -90,7 +73,7 @@ export default function Nav({ current }: { current?: string } = {}) {
 
   return (
     <header ref={root} className={`${styles.nav} ${open ? styles.isOpen : ""} ${onDark ? styles.onDark : ""}`}>
-      <Link href="/" className={styles.logo} aria-label="Discofrog — home" onClick={() => setOpen(false)}>
+      <Link href="/" className={styles.logo} aria-label="Discofrog home" onClick={() => setOpen(false)}>
         <Image src="/figma/logo.png" alt="Discofrog" width={151} height={46} className={styles.logoMark} priority />
       </Link>
 
@@ -99,8 +82,8 @@ export default function Nav({ current }: { current?: string } = {}) {
           <Link
             key={l.href}
             href={l.href}
-            className={`${styles.link} ${active === l.section ? styles.active : ""}`}
-            aria-current={active === l.section ? "true" : undefined}
+            className={`${styles.link} ${current === l.href ? styles.active : ""}`}
+            aria-current={current === l.href ? "page" : undefined}
           >
             <span className={styles.dot} aria-hidden />
             <span>{l.label}</span>
@@ -124,7 +107,12 @@ export default function Nav({ current }: { current?: string } = {}) {
           {LINKS.map((l) => (
             <li key={l.href} className={styles.item}>
               <span className={styles.itemLine} data-item-line />
-              <Link href={l.href} className={styles.itemLink} onClick={() => setOpen(false)}>
+              <Link
+                href={l.href}
+                className={styles.itemLink}
+                aria-current={current === l.href ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
                 <span className={styles.itemFill} aria-hidden />
                 <span className={styles.itemMask}>
                   <span className={styles.itemText} data-item-text>
@@ -140,7 +128,7 @@ export default function Nav({ current }: { current?: string } = {}) {
           <p>
             Discofrog Studio
             <br />
-            Jakarta — Melbourne
+            Jakarta & Melbourne
           </p>
           <p>
             <a href="mailto:discofrogstudio@gmail.com">discofrogstudio@gmail.com</a>

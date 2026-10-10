@@ -5,14 +5,14 @@ import Footer from "@/components/Footer";
 import RevealHeaders from "@/components/RevealHeaders";
 
 export const metadata: Metadata = {
-  title: "Work — Discofrog",
+  title: "Work | Discofrog",
   description: "Selected work from Discofrog: brand identity, websites, SEO and digital experiences.",
 };
 
 export default function WorkPage() {
   return (
     <>
-      <Nav current="#work" />
+      <Nav current="/work" />
       <main>
         <WorkIndex />
       </main>

@@ -73,7 +73,7 @@ export default function Work() {
 
   return (
     <section id="work" ref={root} className={styles.work}>
-      <SectionHeader eyebrow="Explore  01  —  Portfolio" title="Selected work" code="P.04" />
+      <SectionHeader eyebrow="Explore  01  /  Portfolio" title="Selected work" code="P.04" />
 
       {ROWS.map((row, r) => (
         <div key={r} className={`${styles.row} ${row.cls}`}>
@@ -82,7 +82,7 @@ export default function Work() {
               <div className={styles.media} data-media>
                 <Image
                   src={c.image}
-                  alt={`${c.name} — ${c.tags}`}
+                  alt={`${c.name}: ${c.tags}`}
                   fill
                   sizes={c.size === "lg" ? "(max-width: 800px) 100vw, 62vw" : "(max-width: 800px) 100vw, 31vw"}
                   className={styles.image}

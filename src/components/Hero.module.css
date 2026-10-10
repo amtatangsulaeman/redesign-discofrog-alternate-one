@@ -81,6 +81,29 @@
   pointer-events: none;
 }
 
+/* a frog without its sticker box: just the frog, with a soft shadow to sit on the pile */
+.frogTile {
+  border-radius: 0;
+  overflow: visible;
+  background: none;
+}
+
+/* inline frog art (animatable parts) */
+.frogArt {
+  position: absolute;
+  inset: 2%;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 12px rgba(26, 26, 22, 0.18));
+}
+
+.frogArt svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
 /* ——— Headline: plain text, centred, static ——— */
 .headline {
   position: absolute;
@@ -141,4 +164,42 @@
   .headline {
     top: 52%;
   }
+}
+
+/* ——— speech bubble a frog shows after a hop ——— */
+.say {
+  position: absolute;
+  z-index: 6;
+  left: 0;
+  top: 0;
+  width: max-content;
+  max-width: min(260px, 72vw);
+  pointer-events: none;
+}
+
+.sayInner {
+  position: relative;
+  padding: 11px 16px;
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 14px 30px rgba(26, 26, 22, 0.14), 0 1px 3px rgba(26, 26, 22, 0.08);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  opacity: 0;
+  transform-origin: var(--tail, 50%) 100%;
+}
+
+/* tail pointing down at the frog */
+.sayInner::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--tail, 50%) - 7px);
+  bottom: -6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--white);
+  transform: rotate(45deg);
 }

@@ -6,9 +6,9 @@
   padding: calc(var(--nav-h) + max(48px, calc(var(--u) * 80))) var(--gutter) max(80px, calc(var(--u) * 140));
 }
 
-/* first gap (header → intro) is tighter, like /work */
+/* first gap (header → intro) is a little tighter than the section rhythm */
 .page > :first-child {
-  margin-bottom: calc(max(80px, calc(var(--u) * 140)) * -0.6);
+  margin-bottom: calc(max(80px, calc(var(--u) * 140)) * -0.3);
 }
 
 /* ——— Intro: lede left, big statement right (case-study grid) ——— */
@@ -30,20 +30,20 @@
   font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.02em;
+  max-width: 17em; /* shorter lines: reads calmer and leaves air on the right */
 }
 
 /* ——— Facts ——— */
 .facts {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  padding-top: 32px;
+  gap: 32px 24px;
+  padding-top: 40px;
   border-top: 1px solid var(--rule);
-  margin-top: calc(max(80px, calc(var(--u) * 140)) * -0.4);
 }
 
 .fact dt {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   font-size: var(--fs-label);
   font-weight: 500;
   color: var(--fg-muted);
@@ -126,6 +126,7 @@
 @media (max-width: 700px) {
   .intro {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .blockHead {

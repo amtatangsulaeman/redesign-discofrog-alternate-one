@@ -127,7 +127,7 @@ export default function CardDeck({ images, label }: { images: string[]; label: s
         className={styles.deck}
         role="button"
         tabIndex={0}
-        aria-label={`${label} — image ${top + 1} of ${images.length}. Press Enter for the next image.`}
+        aria-label={`${label}, image ${top + 1} of ${images.length}. Press Enter for the next image.`}
         onPointerDown={onDown}
         onPointerMove={onMove}
         onPointerUp={onUp}

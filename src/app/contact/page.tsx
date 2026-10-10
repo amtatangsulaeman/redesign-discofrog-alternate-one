@@ -5,15 +5,15 @@ import Footer from "@/components/Footer";
 import RevealHeaders from "@/components/RevealHeaders";
 
 export const metadata: Metadata = {
-  title: "Contact — Discofrog",
+  title: "Contact | Discofrog",
   description:
-    "Start a project with Discofrog — branding, websites and SEO from Jakarta and Melbourne. We reply within one business day.",
+    "Start a project with Discofrog: branding, websites and SEO from Jakarta and Melbourne. We reply within one business day.",
 };
 
 export default function Contact() {
   return (
     <>
-      <Nav current="#contact" />
+      <Nav current="/contact" />
       <main>
         <ContactPage />
       </main>

@@ -14,7 +14,15 @@ type MouseHandlers = Record<"mousemove" | "mousedown" | "mouseup" | "mousewheel"
 
 const PHYSICS_PROPS = ["position", "left", "top", "width", "height", "margin", "transform"];
 
-export function createGravityStage(stage: HTMLElement, { interactive }: { interactive: boolean }) {
+type Options = {
+  interactive: boolean;
+  /** called after every frame that moved something (e.g. to keep a label on a body) */
+  onSync?: () => void;
+  /** a hopping body touched down on something below it */
+  onLand?: (el: HTMLElement) => void;
+};
+
+export function createGravityStage(stage: HTMLElement, { interactive, onSync, onLand }: Options) {
   const engine = Engine.create({ enableSleeping: true, gravity: { x: 0, y: 0 } });
   let items: Item[] = [];
   let walls: Matter.Body[] = [];
@@ -44,13 +52,18 @@ export function createGravityStage(stage: HTMLElement, { interactive }: { intera
       const h = r.height * k;
       // hidden / not-yet-laid-out element: no body (a 0-size chamfered body crashes matter-js)
       if (w < 2 || h < 2) return;
-      const body = Bodies.rectangle((r.left - sr.left) * k + w / 2, (r.top - sr.top) * k + h / 2, w, h, {
-        chamfer: { radius: Math.max(0, Math.min(radius, h / 2 - 0.5, w / 2 - 0.5)) },
-        restitution: 0.18,
-        friction: 0.5,
-        frictionAir: 0.012,
-        density: 0.0016,
-      });
+      const cx = (r.left - sr.left) * k + w / 2;
+      const cy = (r.top - sr.top) * k + h / 2;
+      const props = { restitution: 0.18, friction: 0.5, frictionAir: 0.012, density: 0.0016 };
+      // a frog (no sticker box) is a round body that always stays upright, like a frog sitting
+      const upright = el.dataset.shape === "frog";
+      const body = upright
+        ? Bodies.circle(cx, cy, Math.min(w, h) * 0.46, { ...props, friction: 0.8, restitution: 0.05 })
+        : Bodies.rectangle(cx, cy, w, h, {
+            ...props,
+            chamfer: { radius: Math.max(0, Math.min(radius, h / 2 - 0.5, w / 2 - 0.5)) },
+          });
+      if (upright) Body.setInertia(body, Infinity);
       Object.assign(el.style, { position: "absolute", left: "0px", top: "0px", width: `${w}px`, height: `${h}px`, margin: "0" });
       items.push({ el, body, w, h });
     });
@@ -67,6 +80,7 @@ export function createGravityStage(stage: HTMLElement, { interactive }: { intera
     ];
     Composite.add(engine.world, [...items.map((i) => i.body), ...walls]);
     sync(true);
+    onSync?.();
     if (dropped) drop();
   }
 
@@ -91,7 +105,10 @@ export function createGravityStage(stage: HTMLElement, { interactive }: { intera
       acc -= STEP;
       steps++;
     }
-    if (steps) sync();
+    if (steps) {
+      sync();
+      onSync?.();
+    }
     raf = requestAnimationFrame(frame);
   }
 
@@ -104,10 +121,11 @@ export function createGravityStage(stage: HTMLElement, { interactive }: { intera
   /** Switch gravity on — everything tumbles into a pile at the bottom of the stage */
   function drop() {
     dropped = true;
-    engine.gravity.y = 1;
+    // a little stronger than default: snappier falls and hops (hop power is tuned to it)
+    engine.gravity.y = 1.6;
     items.forEach(({ body }) => {
       Sleeping.set(body, false);
-      Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.06);
+      if (body.inertia !== Infinity) Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.06);
       Body.setVelocity(body, { x: (Math.random() - 0.5) * 2, y: Math.random() * 2 });
     });
     start();
@@ -122,9 +140,56 @@ export function createGravityStage(stage: HTMLElement, { interactive }: { intera
         x: body.velocity.x + (Math.random() - 0.5) * strength * 0.6,
         y: body.velocity.y - strength * (0.5 + Math.random() * 0.7),
       });
-      Body.setAngularVelocity(body, body.angularVelocity + (Math.random() - 0.5) * 0.08);
+      if (body.inertia !== Infinity) Body.setAngularVelocity(body, body.angularVelocity + (Math.random() - 0.5) * 0.08);
     });
     start();
+  }
+
+  /**
+   * One body hops forward: an up-and-across kick, either way unless it is near an edge (then
+   * back towards the middle). Returns the direction (-1 / 1), or 0 if it could not hop.
+   * Upright bodies (frogs) report their landing through onLand.
+   */
+  const airborne = new Set<Matter.Body>();
+  function hop(el: HTMLElement, power = 12) {
+    const item = items.find((i) => i.el === el);
+    if (!item || !dropped || !visible) return 0;
+    const { body } = item;
+    const x = body.position.x / (width || 1);
+    const dir = x < 0.2 ? 1 : x > 0.8 ? -1 : Math.random() < 0.5 ? -1 : 1;
+    Sleeping.set(body, false);
+    Body.setVelocity(body, { x: dir * (2.2 + Math.random() * 2.2), y: -power });
+    if (body.inertia !== Infinity) {
+      // a tumbled sticker spins back upright over the jump
+      const a = Math.atan2(Math.sin(body.angle), Math.cos(body.angle));
+      Body.setAngle(body, a);
+      Body.setAngularVelocity(body, -a * 0.035);
+    }
+    airborne.add(body);
+    start();
+    return dir;
+  }
+
+  // touch-down: a hopping body, on its way down, hits something underneath it
+  Events.on(engine, "collisionStart", (e) => {
+    for (const { bodyA, bodyB } of e.pairs) {
+      for (const [b, other] of [
+        [bodyA, bodyB],
+        [bodyB, bodyA],
+      ]) {
+        if (!airborne.has(b) || b.velocity.y < 0.5 || other.position.y < b.position.y) continue;
+        airborne.delete(b);
+        const item = items.find((i) => i.body === b);
+        if (item) onLand?.(item.el);
+      }
+    }
+  });
+
+  /** Where a body is right now, in stage pixels (centre, size, angle) */
+  function placeOf(el: HTMLElement) {
+    const item = items.find((i) => i.el === el);
+    if (!item) return null;
+    return { x: item.body.position.x, y: item.body.position.y, w: item.w, h: item.h, angle: item.body.angle, resting: item.body.isSleeping || item.body.speed < 0.3 };
   }
 
   // ——— Drag (mouse only — touch keeps scrolling the page) ———
@@ -181,6 +246,11 @@ export function createGravityStage(stage: HTMLElement, { interactive }: { intera
   return {
     drop,
     nudge,
+    hop,
+    placeOf,
+    /** true while simulating on screen (after the drop), i.e. when a hop would be seen */
+    live: () => dropped && visible && stage.dataset.dragging !== "true",
+    width: () => width,
     destroy() {
       cancelAnimationFrame(raf);
       io.disconnect();

@@ -7,7 +7,7 @@ import Button from "./Button";
 import styles from "./Intro.module.css";
 
 const STATEMENT =
-  "Hi! We’re Discofrog — a small branding & web studio between Jakarta and Melbourne. Small enough to stay close, experienced enough to push back when the brief needs it.";
+  "Hi! We’re Discofrog, a small branding & web studio between Jakarta and Melbourne. Small enough to stay close, experienced enough to push back when the brief needs it.";
 
 export default function Intro() {
   const root = useRef<HTMLElement>(null);
@@ -16,17 +16,23 @@ export default function Intro() {
     () => {
       const mm = gsap.matchMedia();
       mm.add(`not ${REDUCED_MOTION}`, () => {
-        // Words light up as you read down the page
-        gsap.fromTo(
-          "[data-word]",
-          { opacity: 0.15 },
-          {
-            opacity: 1,
-            stagger: 0.05,
-            ease: "none",
-            scrollTrigger: { trigger: root.current, start: "top 75%", end: "bottom 60%", scrub: 0.6 },
-          },
-        );
+        // The section sticks in the middle of the screen while its words light up one by one,
+        // and only scrolls on once the whole statement is lit (plus a short beat to read it).
+        const words = gsap.utils.toArray<HTMLElement>("[data-word]");
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: root.current,
+              start: "center center",
+              // scroll distance scales with the statement length: ~3.5% of a screen per word
+              end: () => `+=${Math.round(window.innerHeight * words.length * 0.035)}`,
+              pin: true,
+              scrub: 0.6,
+              invalidateOnRefresh: true,
+            },
+          })
+          .fromTo(words, { opacity: 0.15 }, { opacity: 1, stagger: 0.05, duration: 0.05, ease: "none" })
+          .to({}, { duration: 0.25 }); // hold the finished statement before releasing
       });
       return () => mm.revert();
     },

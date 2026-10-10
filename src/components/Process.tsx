@@ -9,21 +9,21 @@ import styles from "./Process.module.css";
 const STEPS = [
   {
     title: "Discovery",
-    text: "We dig for the hidden (and sometimes uncomfortable) truths about your business — your audience, your competitors and what actually makes you different.",
+    text: "We dig for the hidden (and sometimes uncomfortable) truths about your business: your audience, your competitors and what actually makes you different.",
     deliverables: ["Stakeholder workshop", "Audience research", "Competitor audit"],
     frog: "/frogs/frog-byte.svg",
     tint: "#d8ebf6",
   },
   {
     title: "Strategy",
-    text: "Positioning, audience and message — so the creative becomes obvious. You get a clear direction to say yes to before a single pixel is designed.",
+    text: "Positioning, audience and message, so the creative becomes obvious. You get a clear direction to say yes to before a single pixel is designed.",
     deliverables: ["Brand positioning", "Messaging", "Sitemap & UX flows"],
     frog: "/frogs/frog-hopper.svg",
     tint: "#d6f3ec",
   },
   {
     title: "Design + build",
-    text: "Identity, website and everything in between. One team, no hand-offs — the people who design it are the people who build it.",
+    text: "Identity, website and everything in between. One team, no hand-offs. The people who design it are the people who build it.",
     deliverables: ["Visual identity", "UI design", "Development", "CMS"],
     frog: "/frogs/frog-goldie.svg",
     tint: "#fdefc4",
@@ -100,7 +100,7 @@ export default function Process() {
 
   return (
     <section id="process" ref={root} className={styles.process}>
-      <SectionHeader eyebrow="Explore  03  —  Approach" title="How we work" code="A.04" />
+      <SectionHeader eyebrow="Explore  03  /  Approach" title="How we work" code="A.04" />
 
       <div className={styles.layout}>
         {/* sticky panel (desktop) */}

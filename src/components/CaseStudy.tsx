@@ -114,13 +114,13 @@ export default function CaseStudy({ project: p, more }: { project: Project; more
         onPointerUp={onUp}
         onPointerCancel={onUp}
         tabIndex={0}
-        aria-label={`${p.name} gallery — scroll sideways`}
+        aria-label={`${p.name} gallery, scroll sideways`}
       >
         {p.gallery.map((src, i) => (
           <figure key={src} className={styles.shot} data-slide>
             <Image
               src={src}
-              alt={`${p.name} — image ${i + 1} of ${p.gallery.length}`}
+              alt={`${p.name}, image ${i + 1} of ${p.gallery.length}`}
               fill
               sizes="(max-width: 700px) 85vw, 70vw"
               className={styles.img}
@@ -182,7 +182,7 @@ export default function CaseStudy({ project: p, more }: { project: Project; more
             <li key={m.slug}>
               <Link href={m.href} className={styles.card}>
                 <div className={styles.cover}>
-                  <Image src={m.image} alt={`${m.name} — ${m.services.join(", ")}`} fill sizes="(max-width: 700px) 100vw, 33vw" className={styles.img} />
+                  <Image src={m.image} alt={`${m.name}: ${m.services.join(", ")}`} fill sizes="(max-width: 700px) 100vw, 33vw" className={styles.img} />
                 </div>
                 <h3 className={styles.name}>{m.name}</h3>
                 <p className={styles.services}>{m.services.join(" · ")}</p>

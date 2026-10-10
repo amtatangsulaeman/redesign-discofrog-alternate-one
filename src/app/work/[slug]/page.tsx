@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const p = projectBySlug(slug);
   if (!p) return {};
   return {
-    title: `${p.name} — Discofrog work`,
+    title: `${p.name} | Discofrog work`,
     description: p.overview,
     openGraph: { images: [p.image] },
   };
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
 export default function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
   return (
     <>
-      <Nav current="#work" />
+      <Nav current="/work" />
       <main>
         <Suspense fallback={<div style={{ minHeight: "100svh" }} aria-busy="true" />}>
           <CaseStudyContent params={params} />

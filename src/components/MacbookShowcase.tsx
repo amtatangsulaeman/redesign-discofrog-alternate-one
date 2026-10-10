@@ -445,7 +445,7 @@ export default function MacbookShowcase() {
         </div>
 
         <p className={styles.caption} data-caption>
-          Selected work · 2024 — 2025 <ArrowDown size={14} strokeWidth={2.25} aria-hidden />
+          Selected work · 2024/2025 <ArrowDown size={14} strokeWidth={2.25} aria-hidden />
         </p>
       </div>
     </section>

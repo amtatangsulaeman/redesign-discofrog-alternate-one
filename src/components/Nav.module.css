@@ -291,3 +291,15 @@
     gap: 12px;
   }
 }
+
+/* full-screen menu: the page you're on gets a yellow dot */
+.itemLink[aria-current="page"] .itemText::after {
+  content: "";
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  margin-left: 0.22em;
+  border-radius: 50%;
+  background: var(--yellow);
+  vertical-align: 0.12em;
+}

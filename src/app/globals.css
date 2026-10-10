@@ -137,3 +137,8 @@ img {
   background: var(--yellow);
   color: var(--ink);
 }
+
+/* while the first-load preloader is up (see Preloader.tsx) */
+html[data-loading] {
+  overflow: hidden;
+}

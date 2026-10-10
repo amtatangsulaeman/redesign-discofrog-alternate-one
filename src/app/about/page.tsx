@@ -6,15 +6,15 @@ import Footer from "@/components/Footer";
 import RevealHeaders from "@/components/RevealHeaders";
 
 export const metadata: Metadata = {
-  title: "About — Discofrog",
+  title: "About | Discofrog",
   description:
-    "Discofrog is an independent branding and web studio in Jakarta and Melbourne — strategy, design and development, all in-house. Awwwards Nominee 2026.",
+    "Discofrog is an independent branding and web studio in Jakarta and Melbourne. Strategy, design and development, all in-house. Awwwards Nominee 2026.",
 };
 
 export default function About() {
   return (
     <>
-      <Nav current="#studio" />
+      <Nav current="/about" />
       <main>
         <AboutPage />
         <Cta current="/about" />

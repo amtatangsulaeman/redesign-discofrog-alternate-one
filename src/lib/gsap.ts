@@ -6,6 +6,9 @@ import { CustomEase } from "gsap/CustomEase";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase, useGSAP);
+// phones: the address bar showing/hiding resizes the viewport on every scroll direction change;
+// ignore those so pinned sections don't jump
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 // Bezier curves lifted from the Figma motion tracks
 export const EASE = {

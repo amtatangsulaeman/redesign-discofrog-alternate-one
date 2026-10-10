@@ -59,14 +59,14 @@ export default function WorkIndex() {
   return (
     <section ref={root} className={styles.page}>
       <SectionHeader
-        eyebrow={`Portfolio  —  ${PROJECTS.length} projects`}
+        eyebrow={`Portfolio  /  ${PROJECTS.length} projects`}
         title="All work"
         code={`P.${PROJECTS.length}`}
       />
 
       <div className={styles.bar} data-toggle>
         <p className={styles.lede}>
-          Brand identities, websites and company profiles — built for brands ready to make a bigger move.
+          Brand identities, websites and company profiles, built for brands ready to make a bigger move.
         </p>
         <div className={styles.toggle} role="tablist" aria-label="Layout">
           <button
@@ -96,7 +96,7 @@ export default function WorkIndex() {
                 <div className={styles.cover} data-cover>
                   <Image
                     src={p.image}
-                    alt={`${p.name} — ${p.services.join(", ")}`}
+                    alt={`${p.name}: ${p.services.join(", ")}`}
                     fill
                     sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                     className={styles.photo}

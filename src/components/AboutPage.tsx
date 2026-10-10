@@ -38,7 +38,7 @@ export default function AboutPage() {
 
   return (
     <section ref={root} className={styles.page}>
-      <SectionHeader eyebrow="About  —  Discofrog Studio" title="About us" code="’21" />
+      <SectionHeader eyebrow="About  /  Discofrog Studio" title="About us" code="’21" />
 
       {/* ——— Statement ——— */}
       <div className={styles.intro}>

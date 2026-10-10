@@ -152,20 +152,22 @@
   white-space: nowrap;
 }
 
-/* Peeking frog — Figma: 150px mascot rotated 8°, at (1143, 166) in the row */
+/* Peeking frog — rises from the bottom-right corner of the open row (desktop), slightly
+   cropped by the row edge so it reads as peeking in */
 .mascotWrap {
+  --size: max(200px, calc(var(--u) * 280));
   position: absolute;
-  right: calc(var(--u) * 56);
-  top: 176px;
-  width: 150px;
-  height: 150px;
+  right: calc(var(--u) * 72);
+  bottom: calc(var(--size) * -0.12);
+  width: var(--size);
+  height: var(--size);
   pointer-events: none;
 }
 
 .mascot {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
 }
 
 .mascot img {
@@ -213,8 +215,382 @@
   }
 
   .mascotWrap {
-    top: auto;
+    --size: 150px;
     bottom: -40px;
     right: 8px;
+  }
+}
+
+/* ——— Desktop story: the night pond (frog catches fireflies) ——— */
+.nightWrap,
+.night {
+  display: none;
+}
+
+@media (min-width: 901px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  /* full-bleed wrapper; the stage inside is pinned (a pinned element with negative margins
+     would keep its narrower width, leaving a strip at the edge) */
+  .nightWrap {
+    display: block;
+    margin: 0 calc(var(--gutter) * -1);
+  }
+
+  .night {
+    position: relative;
+    display: block;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden; /* clips the sunrise glow */
+  }
+
+  .accordion {
+    display: none;
+  }
+}
+
+.sun {
+  position: absolute;
+  left: 50%;
+  bottom: -70%;
+  width: 130%;
+  aspect-ratio: 1;
+  margin-left: -65%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 120, 0.6) 0%, rgba(253, 170, 100, 0.28) 32%, rgba(253, 170, 100, 0) 62%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stars {
+  position: absolute;
+  inset: 0 0 40% 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fffbe9;
+  opacity: 0.8;
+}
+
+.nightWater {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(21, 39, 42, 0) 0%, #15272a 30%, #0f1f1f 100%);
+}
+
+/* morning water: replaces the night water at sunrise, and fades into the page colour at the
+   bottom so the stage runs straight into How we work */
+.dayWater {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: linear-gradient(to bottom, rgba(216, 237, 241, 0) 0%, #d8edf1 28%, #d2eaef 62%, var(--paper) 100%);
+  opacity: 0;
+}
+
+/* left: what the frog has caught; cards share one grid cell and swap in place */
+.cards {
+  position: absolute;
+  z-index: 2;
+  left: var(--gutter);
+  top: calc(var(--nav-h) + 20px);
+  bottom: 12%;
+  width: 40%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.card {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  visibility: hidden;
+}
+
+.caught {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cardTitle {
+  margin: 14px 0 18px;
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.cardSummary {
+  max-width: 26em;
+  font-size: var(--fs-lede);
+  line-height: 1.45;
+  color: var(--fg);
+}
+
+.cardBody {
+  max-width: 32em;
+  margin-top: 12px;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
+.cardList {
+  margin-top: 18px;
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+/* the jar: four dots that light up as fireflies are caught */
+.jar {
+  grid-row: 2;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--rule);
+  border-radius: 50%;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  background: #fdd26e;
+  box-shadow: 0 0 12px 3px rgba(253, 210, 110, 0.6);
+  opacity: var(--on, 0);
+}
+
+/* right: the pond scene */
+.scene {
+  position: absolute;
+  right: var(--gutter);
+  top: calc(var(--nav-h) + 10px);
+  bottom: 0;
+  width: 52%;
+}
+
+/* a firefly is a point; the glow and body hang around it */
+.fly {
+  position: absolute;
+  z-index: 2;
+  width: 0;
+  height: 0;
+}
+
+.flyDrift {
+  position: absolute;
+}
+
+.flyGlow {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 236, 160, 0.95) 0%, rgba(253, 210, 110, 0.5) 30%, rgba(253, 210, 110, 0) 70%);
+}
+
+.flyBody {
+  position: absolute;
+  left: -4px;
+  top: -3px;
+  width: 8px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff7cf;
+}
+
+.tongue {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 8px;
+  border-radius: 4px;
+  /* same pink as the tongue drawn in the frog's mouth */
+  background: linear-gradient(#ff8fab, #f26a8c);
+  transform-origin: 0 50%;
+}
+
+/* sticky tip */
+.tongue::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff7a9a;
+}
+
+.perch {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  width: max(180px, calc(var(--u) * 230));
+  margin-left: calc(max(180px, calc(var(--u) * 230)) * -0.5);
+}
+
+.padSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.frog {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 44%;
+  width: max(120px, calc(var(--u) * 150));
+  margin-left: calc(max(120px, calc(var(--u) * 150)) * -0.5);
+  transform-origin: 50% 100%;
+}
+
+.frogBody {
+  position: relative;
+  transform-origin: 50% 100%;
+}
+
+.frogArt {
+  display: block;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.35));
+}
+
+.frogArt svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* the belly glows brighter with every firefly swallowed */
+.belly {
+  position: absolute;
+  left: 22%;
+  top: 50%;
+  width: 56%;
+  height: 40%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 228, 130, 0.95), rgba(253, 210, 110, 0));
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+/* ——— Phones: the same story, stacked (card on top, pond below) ——— */
+@media (max-width: 900px) and (min-height: 520px) and (prefers-reduced-motion: no-preference) {
+  .nightWrap {
+    display: block;
+    margin: 0 calc(var(--gutter) * -1);
+  }
+
+  .night {
+    position: relative;
+    display: block;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .accordion {
+    display: none;
+  }
+
+  .cards {
+    left: var(--gutter);
+    right: var(--gutter);
+    top: calc(var(--nav-h) + 8px);
+    bottom: auto;
+    width: auto;
+    height: 46%;
+    grid-template-rows: auto 1fr;
+    row-gap: 18px;
+  }
+
+  .jar {
+    grid-row: 1;
+    order: -1;
+  }
+
+  .card {
+    grid-row: 2;
+    align-self: start;
+  }
+
+  .cardTitle {
+    margin: 10px 0 12px;
+  }
+
+  /* room is tight on a phone: the summary and the deliverables carry the card */
+  .cardBody {
+    display: none;
+  }
+
+  .cardList {
+    margin-top: 12px;
+  }
+
+  .scene {
+    left: var(--gutter);
+    right: var(--gutter);
+    top: 46%;
+    width: auto;
+  }
+
+  /* a narrow screen needs a much bigger sun for the glow to reach the text */
+  .sun {
+    bottom: -45%;
+    width: 280%;
+    margin-left: -140%;
+  }
+
+  .perch {
+    bottom: 6%;
+    width: 150px;
+    margin-left: -75px;
+  }
+
+  .frog {
+    width: 100px;
+    margin-left: -50px;
+  }
+
+  .nightWater,
+  .dayWater {
+    height: 28%;
   }
 }

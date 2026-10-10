@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { ArrowRight, ArrowUp } from "lucide-react";
 import { gsap, useGSAP, REDUCED_MOTION, pauseWhenOffscreen } from "@/lib/gsap";
+import { bringToLife, part } from "@/lib/frogLife";
 import DiscoBall from "./DiscoBall";
 import Mascot from "./Mascot";
 import styles from "./Footer.module.css";
@@ -58,6 +59,8 @@ const COLUMNS = [
  *   bar 2 · hip sway — weight shifts left / right, body leans into it
  *   bar 3 · shimmy — quick shoulder wiggle on the off-beats, then a crouch
  *   bar 4 · big jump with stretch, wobbly landing, settle
+ * The face dances along: it sings on the bounces, eyes follow the sway, closes its eyes for the
+ * shimmy, goes wide-eyed in the big jump and blushes on the landing.
  */
 function buildDance(frog: HTMLElement, shadow: HTMLElement) {
   const B = 0.5;
@@ -111,6 +114,40 @@ function buildDance(frog: HTMLElement, shadow: HTMLElement) {
     { scale: 1, opacity: 0.6, duration: 0.33, ease: "power2.in" },
     6.42,
   );
+  // ——— the face ———
+  const eyes = part(frog, "Eyes");
+  const mouth = part(frog, "Mouth");
+  const pupils = [...part(frog, "Pupil L"), ...part(frog, "Pupil R")];
+  const shines = [...part(frog, "Shine L"), ...part(frog, "Shine R")];
+  const cheeks = [...part(frog, "Cheek L"), ...part(frog, "Cheek R")];
+  const EYE = "108 52";
+  const MOUTH = "108 100";
+  // bar 1: sings, the mouth opens on every hop
+  for (let i = 0; i < 4; i++) {
+    tl.to(mouth, { scaleY: 1.5, scaleX: 0.9, svgOrigin: MOUTH, duration: B * 0.25, ease: "power2.out" }, i * B + B * 0.18).to(
+      mouth,
+      { scaleY: 1, scaleX: 1, duration: B * 0.3, ease: "power2.in" },
+      i * B + B * 0.55,
+    );
+  }
+  // bar 2: eyes lead the sway
+  [-1, 1, -1, 1].forEach((dir, i) => {
+    tl.to(pupils, { x: dir * 6, y: 1, duration: B * 0.4, ease: "sine.out" }, 2 + i * B).to(shines, { x: dir * 2.5, duration: B * 0.4, ease: "sine.out" }, 2 + i * B);
+  });
+  // bar 3: eyes shut, big grin, lost in the music
+  tl.to([...pupils, ...shines], { x: 0, y: 0, duration: 0.15 }, 4)
+    .to(eyes, { scaleY: 0.12, svgOrigin: EYE, duration: 0.12, ease: "power2.in" }, 4.1)
+    .to(mouth, { scaleY: 1.6, scaleX: 1.05, svgOrigin: MOUTH, duration: 0.2, ease: "power2.out" }, 4.1)
+    .to(eyes, { scaleY: 1, duration: 0.15, ease: "power2.out" }, 5.6)
+    .to(mouth, { scaleY: 1, scaleX: 1, duration: 0.2 }, 5.6);
+  // bar 4: wide-eyed in the air, a blush on landing
+  tl.to(eyes, { scale: 1.16, svgOrigin: EYE, duration: 0.2, ease: "back.out(3)" }, 6)
+    .to(mouth, { scaleY: 1.7, scaleX: 0.85, svgOrigin: MOUTH, duration: 0.2, ease: "power2.out" }, 6)
+    .to(eyes, { scale: 1, duration: 0.2, ease: "power2.out" }, 6.75)
+    .to(mouth, { scaleY: 1, scaleX: 1, duration: 0.25 }, 6.75)
+    .to(cheeks, { opacity: 1, scale: 1.2, svgOrigin: "108 107", duration: 0.2 }, 6.75)
+    .to(cheeks, { opacity: 0.55, scale: 1, duration: 0.5 }, 7.3);
+
   tl.to({}, { duration: 8 - tl.duration() }); // pad to exactly 4 bars
   return tl;
 }
@@ -171,6 +208,8 @@ export default function Footer() {
         });
 
         loops.push(buildDance(mascot.current!, q("[data-mascot-shadow]")[0]));
+        // breathing and twinkling sparkles; the dance drives the eyes, so no blinking or glancing
+        const stopLife = bringToLife([mascot.current!], { glance: false, blink: false });
 
         // Nothing in the disco stage needs to run while the footer is off screen
         pauseWhenOffscreen(root.current, loops);
@@ -181,6 +220,8 @@ export default function Footer() {
           ease: "none",
           scrollTrigger: { trigger: q("[data-big]"), start: "top bottom", end: "bottom bottom", scrub: true },
         });
+
+        return () => stopLife();
       });
       return () => mm.revert();
     },

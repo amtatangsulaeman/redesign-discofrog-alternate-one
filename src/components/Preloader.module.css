@@ -1,0 +1,174 @@
+/* First-load curtain (see Preloader.tsx). Shown from the server HTML; hidden by JS when ready. */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--paper);
+  color: var(--ink);
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1), border-radius 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* leaving: the frog hops, the panel slides up and away */
+.loader[data-state="leaving"] {
+  transform: translateY(-100%);
+  border-radius: 0 0 50% 50% / 0 0 12vh 12vh;
+  pointer-events: none;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.frog {
+  width: max(96px, calc(var(--u) * 120));
+  transform-origin: 50% 100%;
+  animation: hop 0.9s cubic-bezier(0.3, 0, 0.3, 1) infinite;
+}
+
+.art {
+  display: block;
+  filter: drop-shadow(0 12px 14px rgba(26, 26, 22, 0.16));
+}
+
+.art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.shadow {
+  width: max(70px, calc(var(--u) * 90));
+  height: 10px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: rgba(26, 26, 22, 0.12);
+  animation: shadow 0.9s cubic-bezier(0.3, 0, 0.3, 1) infinite;
+}
+
+.line {
+  margin-top: 8px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.loader[data-state="leaving"] .frog {
+  animation: leap 0.5s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+
+.loader[data-state="leaving"] .line,
+.loader[data-state="leaving"] .shadow,
+.loader[data-state="leaving"] .foot {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.foot {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: max(28px, calc(var(--u) * 40));
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.bar {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.count {
+  min-width: 4ch;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-caption);
+  text-align: right;
+  color: var(--ink);
+}
+
+/* crouch → up → down → squash, one loop */
+@keyframes hop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1.12, 0.86);
+  }
+  15% {
+    transform: translateY(0) scale(1, 1);
+  }
+  45% {
+    transform: translateY(-34px) scale(0.94, 1.08);
+  }
+  75% {
+    transform: translateY(0) scale(1, 1);
+  }
+  85% {
+    transform: translateY(0) scale(1.1, 0.9);
+  }
+}
+
+@keyframes shadow {
+  0%,
+  15%,
+  75%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+}
+
+/* the last hop: straight up and out with the curtain */
+@keyframes leap {
+  0% {
+    transform: translateY(0) scale(1.14, 0.84);
+  }
+  30% {
+    transform: translateY(0) scale(0.92, 1.1);
+  }
+  100% {
+    transform: translateY(-40vh) scale(0.95, 1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frog,
+  .shadow {
+    animation: none;
+  }
+
+  .loader {
+    transition: opacity 0.4s;
+  }
+
+  .loader[data-state="leaving"] {
+    transform: none;
+    opacity: 0;
+  }
+
+  .loader[data-state="leaving"] .frog {
+    animation: none;
+  }
+}
